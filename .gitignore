@@ -1,5 +1,5 @@
 bower_components
 dist
-.idea
+.idea/
 *.iml
 node_modules
