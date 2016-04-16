@@ -24,4 +24,30 @@ router.route('/:id').get(function (req, res) {
     });
 });
 
+router.route('/').post(function (req, res) {
+    console.log(req.body);
+    User.save(req.body, function (err, user) {
+        if (err) res.send(err);
+
+        res.json(user);
+    });
+});
+
+router.route('/:id').post(function (req, res) {
+    console.log(req.body);
+    User.save({id: req.params.id}, req.body, function (err, user) {
+        if (err) res.send(err);
+
+        res.json(user);
+    });
+});
+
+router.route('/:id').delete(function (req, res) {
+    User.remove({id: req.params.id}, function (err, user) {
+        if (err) res.send(err);
+
+        res.json(user);
+    });
+});
+
 module.exports = router;

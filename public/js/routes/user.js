@@ -13,6 +13,14 @@
                 .when('/users', {
                     templateUrl: 'views/user/user.list.html',
                     controller: 'UserListCtrl'
+                })
+                .when('/user', {
+                    templateUrl: 'views/user/user.html',
+                    controller: 'UserCtrl'
+                })
+                .when('/user/:id', {
+                    templateUrl: 'views/user/user.html',
+                    controller: 'UserCtrl'
                 });
         }]);
 

@@ -13,7 +13,7 @@ var gulp = require('gulp'),
 gulp.task('default', ['start']);
 
 gulp.task('dist', function (cb) {
-    return runSequence('clean', ['jshint:client', 'html', 'css', 'js', 'images'], cb);
+    return runSequence('clean', ['jshint:client', 'html', 'css', 'fonts', 'js', 'images'], cb);
 });
 
 gulp.task('start', ['dist'], function () {
@@ -70,6 +70,7 @@ gulp.task('libs', function () {
             'bower_components/angular/angular.min.js',
             'bower_components/angular-route/angular-route.min.js',
             'bower_components/angular-resource/angular-resource.min.js',
+            'bower_components/angular-validation-match/dist/angular-validation-match.min.js',
             'public/libs/js/**/*.js'
         ])
         .pipe(concat('libs.min.js'))
@@ -88,7 +89,16 @@ gulp.task('styles', function () {
 gulp.task('libStyles', function () {
     return gulp.src([
             'bower_components/bootstrap/dist/css/bootstrap.min.css',
+            'bower_components/font-awesome/css/font-awesome.min.css',
             'public/libs/css/**/*.css'])
         .pipe(concat('libs.min.css'))
         .pipe(gulp.dest('dist/css/'));
+});
+
+gulp.task('fonts', function () {
+    return gulp.src([
+        'bower_components/bootstrap/dist/fonts/*',
+        'bower_components/font-awesome/fonts/*'
+    ])
+        .pipe(gulp.dest('dist/fonts/'));
 });
